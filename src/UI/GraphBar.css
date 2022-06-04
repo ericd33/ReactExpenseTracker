@@ -1,0 +1,28 @@
+.graph__bar__fill {
+    width:100%;
+    border-radius: 15px;
+    background-color:rgb(41, 85, 181);
+    border-collapse:collapse;
+    position:absolute;
+    bottom:0;
+}
+.graph__bar__label {
+    color:white;
+    font-weight:bold;
+}
+.graph__bar{
+    width:100%;
+    display:flex;
+    align-items: center;
+    flex-direction:column;
+}
+.graph__bar__inner {
+    height:6rem;
+    width:1rem;
+    border-radius: 15px;
+    position:relative;
+    background-color:white;
+    display:flex;
+    flex-direction:row;
+}
+

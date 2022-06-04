@@ -1,5 +1,25 @@
+* {
+  padding:0;
+  margin:0;
+  
+}
+
+html {
+  background-color: #282c34;
+  overflow-y: overlay;
+}
+
 .App {
   text-align: center;
+}
+
+
+.app__wrapper {
+  margin:auto;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  max-width:40rem;
+  background-color:rgb(26, 55, 80);
+  min-height:100vh;
 }
 
 .App-logo {
@@ -24,8 +44,29 @@
   color: white;
 }
 
+.wrap__body {
+  display:flex;
+  flex-direction: column;
+}
+
+.items__wrap{
+  display:flex;
+  width:90%;
+  margin:auto;
+  flex-direction:column;
+}
+
+@media only screen and (max-width: 640px) {
+  .items__wrap{
+    width:100%;
+  }
+}
 .App-link {
   color: #61dafb;
+}
+
+.items__wrap {
+  padding-bottom:1rem;
 }
 
 @keyframes App-logo-spin {

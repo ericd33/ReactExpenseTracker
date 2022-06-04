@@ -1,0 +1,7 @@
+.graph__wrapper {
+    height:10rem;
+    width:100%;
+    display:flex;
+    background-color:rgb(41, 19, 19);
+    align-items:center;
+}

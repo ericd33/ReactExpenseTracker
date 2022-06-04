@@ -1,0 +1,13 @@
+.banner__wrap {
+    display:flex;
+    padding-left:2rem;
+    align-items:center;
+    flex-direction:row;
+    color:white;
+    background-color:rgb(26, 55, 80);
+    height:20%;
+}
+
+.banner__wrap h1 {
+    padding-left:1em;
+}

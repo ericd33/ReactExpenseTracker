@@ -1,0 +1,51 @@
+.item__wrap {
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.item__name{
+    flex:1;
+    margin-left:.5rem;
+}
+
+
+.item__date {
+    color:black;
+    font-weight: bolder;
+    font-size:12px;
+    background-color:#ffff;
+    border: 1px solid white;
+    border-radius:20px;
+    height:3rem;
+    margin-top:.5rem;
+    margin-bottom:.5rem;
+    margin-right:.5rem;
+    width:5rem;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.item__price {
+    font-size:100%;
+    overflow:hidden;
+    border: 1px solid white;
+    border-radius:20px;
+    height:3rem;
+    margin-left:.5rem;
+    min-width:5rem;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.item__green {
+    background-color:#1E7443;
+}
+
+.item__red {
+    background-color: #8A2020;
+}
