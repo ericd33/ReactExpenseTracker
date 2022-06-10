@@ -29,13 +29,13 @@ const INITIAL_LIST = [
   },
   {
     id: "s4",
-    title: "Jesica",
+    title: "Value",
     date: new Date(2022, 8, 24, 10, 33, 30, 0),
     price: 100,
   },
   {
     id: "s5",
-    title: "Jesica neg",
+    title: "value neg",
     date: new Date(2022, 8, 24, 10, 33, 30, 0),
     price: -50,
   },
