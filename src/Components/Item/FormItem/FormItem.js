@@ -37,13 +37,13 @@ function FormItem(props) {
     <div className="form__wrap">
       <form onSubmit={submitHandler}>
         <label htmlFor="title">Titulo: </label>
-        <input onChange={titleHandler} value={title} type="text" name="title" />
+        <input onChange={titleHandler} value={title} type="text" name="title" required/>
 
         <label htmlFor="price">Precio: </label>
-        <input onChange={priceHandler} value={price} type="text" name="price"></input>
+        <input onChange={priceHandler} value={price} type="text" name="price" required></input>
 
-        <label htmlFor="date">Fecha: </label>
-        <input onChange={dateHandler} type="date" value={date} name="date"></input>
+        <label htmlFor="date">Fecha: </label> 
+        <input onChange={dateHandler} type="date" value={date} name="date" required></input>
 
         <input type="submit" className="submit" name="Submit"></input>
       </form>

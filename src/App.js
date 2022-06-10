@@ -5,7 +5,7 @@ import Graph from "./UI/Graph";
 import ItemComponent from "./Components/Item/ItemComponent";
 import FormItem from "./Components/Item/FormItem/FormItem";
 import Card from "./UI/Card";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import DropDown from "./UI/DropDown";
 
 const INITIAL_LIST = [
@@ -41,24 +41,27 @@ const INITIAL_LIST = [
   },
 ];
 
-const INITIAL_MONTHS = [0,0,0,0,0,0,0,0,0,0,0,0]
+const INITIAL_MONTHS = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 function App() {
   const [items, updateItemList] = useState(INITIAL_LIST);
   const [hidden, setHideForm] = useState(false);
   const [year, setYear] = useState("all");
-  const [chart, setChartArr] = useState(toPercentArr(makeValueArray(getItemsByYear(items,"all"))));
 
   function selectYearHandler(data) {
     setYear(data);
-    setChartArr(toPercentArr(makeValueArray(getItemsByYear(items,data))));
   }
 
   function makeValueArray(itemList) {
     let narr = [...INITIAL_MONTHS];
-    
+
     for (let i in itemList) {
-      narr.splice(itemList[i].date.getMonth(), 1, parseInt(narr[itemList[i].date.getMonth()]) + parseInt(itemList[i].price))
+      narr.splice(
+        itemList[i].date.getMonth(),
+        1,
+        parseInt(narr[itemList[i].date.getMonth()]) +
+          parseInt(itemList[i].price)
+      );
     }
 
     return narr;
@@ -66,24 +69,24 @@ function App() {
 
   //filtrar items por anio
   //array => array
-  function getItemsByYear(itemList, y){
-    let filteredList = itemList.filter(elem => ((elem.date.getFullYear() == y) || (y == "all")) )
+  function getItemsByYear(itemList, y) {
+    let filteredList = itemList.filter(
+      (elem) => elem.date.getFullYear() == y || y == "all"
+    );
     return filteredList;
   }
-
 
   //transformar a porcentaje de a cuerdo a el mayor elemento
   //array => array
   function toPercentArr(arr) {
-    let narr =  [];
+    let narr = [];
     let max = Math.max(...arr);
-    
-    narr = arr.map(function(ele){
-      return (ele / max) * 100;
-    })
-    return narr
-  }
 
+    narr = arr.map(function (ele) {
+      return (ele / max) * 100;
+    });
+    return narr;
+  }
 
   function hideFormHandler() {
     let grab = hidden;
@@ -96,22 +99,16 @@ function App() {
   }
 
   function saveExpenseDataHandler(data) {
-    
     updateItemList(function (prevItem) {
       return [data, ...prevItem];
     });
-    
   }
-
-  useEffect(() => {
-    setChartArr(toPercentArr(makeValueArray(getItemsByYear(items,year))));
-  })
-
+  let fillChart = toPercentArr(makeValueArray(getItemsByYear(items, year)));
   return (
     <div className="app__wrapper">
       <Banner />
       <DropDown onSelectYear={selectYearHandler} />
-      <Graph fill={chart} />
+      <Graph fill={fillChart} />
       <Controls onHideForm={hideFormHandler}></Controls>
       <div className="wrap__body">
         <Card hideThis={hidden}>
@@ -138,14 +135,13 @@ function App() {
 
 export default App;
 
-
-  // function calculateChartArr(data) {
-  //   let nchart = [...INITIAL_MONTHS];
-  //   let filteredItems = items.filter(
-  //     (elem) => elem.date.getFullYear() == data || data == "all"
-  //   );
-  //   for (let i in filteredItems) {
-  //     nchart[filteredItems[i].date.getMonth()].total += filteredItems[i].price;
-  //   }
-  //   return nchart;
-  // }
+// function calculateChartArr(data) {
+//   let nchart = [...INITIAL_MONTHS];
+//   let filteredItems = items.filter(
+//     (elem) => elem.date.getFullYear() == data || data == "all"
+//   );
+//   for (let i in filteredItems) {
+//     nchart[filteredItems[i].date.getMonth()].total += filteredItems[i].price;
+//   }
+//   return nchart;
+// }
