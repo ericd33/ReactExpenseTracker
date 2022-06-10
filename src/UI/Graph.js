@@ -4,11 +4,14 @@ import GraphBar from './GraphBar';
 
 
 function Graph(props) {
-    console.log(props.chartData);
+
+    const MONTH_ARR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
+
+
      return(
          <div className="graph__wrapper">
-             {props.chartData.map(function (data) {
-                 return <GraphBar value={data.val} label={data.month} key={data.month}/>
+             {MONTH_ARR.map(function (ele, index) {
+                 return <GraphBar fill={props.fill[index]} label={MONTH_ARR[index]}/>
              })}
          </div>
      );

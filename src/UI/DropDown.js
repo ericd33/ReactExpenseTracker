@@ -3,7 +3,6 @@ import React from "react";
 function DropDown(props) {
 
     function submitHandler(event) {
-        console.log("passed "+event.target.value);
         props.onSelectYear(event.target.value);
     }
     return (
