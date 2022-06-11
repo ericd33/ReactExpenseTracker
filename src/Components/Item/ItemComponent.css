@@ -11,6 +11,11 @@
     margin-left:.5rem;
 }
 
+.deleteButton {
+    color:#8A2020;
+    font-size: 1.8rem;
+    padding-right:.5rem;
+}
 
 .item__date {
     color:black;

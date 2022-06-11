@@ -2,6 +2,19 @@
     height:10rem;
     width:100%;
     display:flex;
-    background-color:rgb(41, 19, 19);
+    background-color:#1A1717;
     align-items:center;
+}   
+
+.stats__wrapper {
+    display:flex;
+    flex-direction: row;
 }
+
+.statsCard {
+    width:100%;
+    padding-left:.5rem;
+    padding-right:.5rem;
+    padding-bottom:1rem;
+}
+

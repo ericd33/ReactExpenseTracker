@@ -67,7 +67,7 @@ function App() {
     return narr;
   }
 
-  //filtrar items por anio
+  //filtrar items por año
   //array => array
   function getItemsByYear(itemList, y) {
     let filteredList = itemList.filter(
@@ -98,16 +98,57 @@ function App() {
     return grab;
   }
 
+
+  function deleteHandler(data) {
+    console.log("trying to delete "+data);
+    updateItemList(function (prevItem) {
+      let narr = [...prevItem];
+      narr = prevItem.filter(elem => elem.title != data);
+      console.log(narr);
+      return narr;
+    });
+  }
+
   function saveExpenseDataHandler(data) {
     updateItemList(function (prevItem) {
       return [data, ...prevItem];
     });
   }
-  let fillChart = toPercentArr(makeValueArray(getItemsByYear(items, year)));
+
+  function getYearsArray() {
+    let narr = [];
+    for(let i in items) {
+      if (narr.indexOf(items[i].date.getFullYear()) == -1) {
+        narr.push(items[i].date.getFullYear())
+      }
+      
+    }
+    narr.sort();
+    return narr;
+  }
+
+  function getIncome() {
+
+  }
+
+  function getOutcome() {
+
+  }
+
+  function getTotal() {
+
+  }
+  let fillChart = [];
+  if (getItemsByYear(items, year).length == 0 ) {
+    fillChart = INITIAL_MONTHS;
+  } else {
+    fillChart = toPercentArr(makeValueArray(getItemsByYear(items, year)));
+  } 
+  const noItemsFound = fillChart == INITIAL_MONTHS &&<h2 className="noFound">No Items Found</h2>;
   return (
     <div className="app__wrapper">
       <Banner />
-      <DropDown onSelectYear={selectYearHandler} />
+      <DropDown onSelectYear={selectYearHandler} yearsArr={getYearsArray}/>
       <Graph fill={fillChart} />
       <Controls onHideForm={hideFormHandler}></Controls>
       <div className="wrap__body">
@@ -116,6 +157,7 @@ function App() {
         </Card>
       </div>
       <div className="items__wrap">
+        {noItemsFound}
         {items.map(function (x) {
           if (x.date.getFullYear() == year || year == "all") {
             return (
@@ -124,6 +166,7 @@ function App() {
                 price={x.price}
                 name={x.title}
                 date={x.date}
+                itemToDel={deleteHandler}
               />
             );
           } else return "";

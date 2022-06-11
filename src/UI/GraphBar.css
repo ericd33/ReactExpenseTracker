@@ -5,6 +5,7 @@
     border-collapse:collapse;
     position:absolute;
     bottom:0;
+    transition-duration:350ms;
 }
 .graph__bar__label {
     color:white;

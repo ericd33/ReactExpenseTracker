@@ -8,11 +8,10 @@ function DropDown(props) {
     return (
         <div className="dropdown__wrap">
         <select onChange={submitHandler}>
-            <option value="all">All</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
+        <option value="all">All</option>
+        {props.yearsArr().map(ele => {
+                return <option value={ele}>{ele}</option>
+            })}
         </select>
         </div>
     )
