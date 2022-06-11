@@ -6,7 +6,7 @@ This is a single page expense tracker app.
 -Add/Remove expenses \
 -Filter them by Year \
 -Display a graph that shows how much you spent each month \
--Display your Income/Outcome/Total money \
+-Display your Income/Outcome/Total money 
 
 Demo: https://edextracker.netlify.app
 
