@@ -1,6 +1,6 @@
 # Expense Tracker
 
-This is a single page expense tracker app.
+This is a single page expense tracker app. Data is lost if you close the site.
 
 ## Features
 -Add/Remove expenses \
