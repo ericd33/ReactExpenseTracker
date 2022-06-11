@@ -1,13 +1,20 @@
 .banner__wrap {
     display:flex;
-    padding-left:2rem;
     align-items:center;
+    justify-content: center;
     flex-direction:row;
     color:white;
     background-color:rgb(26, 55, 80);
     height:20%;
+    padding-top:1rem;
+    font-size: 1.5rem;
 }
 
-.banner__wrap h1 {
-    padding-left:1em;
+.banner__logo:last-of-type {
+    padding-left:1rem;
 }
+
+.banner__logo:first-of-type{
+    padding-right:1rem;
+}
+

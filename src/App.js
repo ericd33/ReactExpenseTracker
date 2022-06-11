@@ -11,33 +11,15 @@ import DropDown from "./UI/DropDown";
 const INITIAL_LIST = [
   {
     id: "s1",
-    title: "Mambru",
+    title: "Sample 1",
     date: new Date(2021, 11, 24, 10, 33, 30, 0),
-    price: 100,
-  },
-  {
-    id: "s2",
-    title: "Food",
-    date: new Date(2020, 11, 24, 10, 33, 30, 0),
-    price: 1000,
-  },
-  {
-    id: "s3",
-    title: "pipi",
-    date: new Date(2023, 6, 24, 10, 33, 30, 0),
     price: 500,
   },
   {
-    id: "s4",
-    title: "Value",
-    date: new Date(2022, 8, 24, 10, 33, 30, 0),
-    price: 100,
-  },
-  {
-    id: "s5",
-    title: "value neg",
-    date: new Date(2022, 8, 24, 10, 33, 30, 0),
-    price: -50,
+    id: "s2",
+    title: "Sample 2",
+    date: new Date(2020, 8, 24, 10, 33, 30, 0),
+    price: -250,
   },
 ];
 
@@ -98,13 +80,11 @@ function App() {
     return grab;
   }
 
-
   function deleteHandler(data) {
-    console.log("trying to delete "+data);
     updateItemList(function (prevItem) {
       let narr = [...prevItem];
-      narr = prevItem.filter(elem => elem.title != data);
-      console.log(narr);
+      narr = prevItem.filter((elem) => elem.title != data);
+
       return narr;
     });
   }
@@ -117,40 +97,60 @@ function App() {
 
   function getYearsArray() {
     let narr = [];
-    for(let i in items) {
+    for (let i in items) {
       if (narr.indexOf(items[i].date.getFullYear()) == -1) {
-        narr.push(items[i].date.getFullYear())
+        narr.push(items[i].date.getFullYear());
       }
-      
     }
     narr.sort();
     return narr;
   }
 
   function getIncome() {
-
+    let n = 0;
+    for (let i in items) {
+      if (items[i].price > 0) {
+        n += parseInt(items[i].price);
+      }
+    }
+    return n;
   }
 
   function getOutcome() {
-
+    let n = 0;
+    for (let i in items) {
+      if (items[i].price < 0) {
+        n += parseInt(items[i].price);
+      }
+    }
+    return n;
   }
 
   function getTotal() {
-
+    return getOutcome() + getIncome();
   }
   let fillChart = [];
-  if (getItemsByYear(items, year).length == 0 ) {
+  if (getItemsByYear(items, year).length == 0) {
     fillChart = INITIAL_MONTHS;
   } else {
     fillChart = toPercentArr(makeValueArray(getItemsByYear(items, year)));
-  } 
-  const noItemsFound = fillChart == INITIAL_MONTHS &&<h2 className="noFound">No Items Found</h2>;
+  }
+  const noItemsFound = fillChart == INITIAL_MONTHS && (
+    <h2 className="noFound">No Items Found</h2>
+  );
   return (
     <div className="app__wrapper">
       <Banner />
-      <DropDown onSelectYear={selectYearHandler} yearsArr={getYearsArray}/>
-      <Graph fill={fillChart} />
-      <Controls onHideForm={hideFormHandler}></Controls>
+
+      <Graph
+        fill={fillChart}
+        income={getIncome}
+        outcome={getOutcome}
+        total={getTotal}
+      />
+      <Controls onHideForm={hideFormHandler}>
+        <DropDown onSelectYear={selectYearHandler} yearsArr={getYearsArray} />
+      </Controls>
       <div className="wrap__body">
         <Card hideThis={hidden}>
           <FormItem onSaveExpenseData={saveExpenseDataHandler} />
@@ -177,14 +177,3 @@ function App() {
 }
 
 export default App;
-
-// function calculateChartArr(data) {
-//   let nchart = [...INITIAL_MONTHS];
-//   let filteredItems = items.filter(
-//     (elem) => elem.date.getFullYear() == data || data == "all"
-//   );
-//   for (let i in filteredItems) {
-//     nchart[filteredItems[i].date.getMonth()].total += filteredItems[i].price;
-//   }
-//   return nchart;
-// }

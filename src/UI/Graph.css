@@ -17,4 +17,43 @@
     padding-right:.5rem;
     padding-bottom:1rem;
 }
+.litte__stats {
+    padding-top:1rem;
+    padding-bottom:1rem;
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    justify-content: space-evenly;
 
+}
+
+.stat__mini {
+    background-color: white;
+    border-radius: 120px;
+    display:flex;
+    align-items: center;
+    font-size:11px;
+    flex-direction: column;
+    line-height: 20px;
+    color:black;
+    padding:.4rem;
+    width:100%;
+    justify-content: center;
+    margin-right:1vw;
+    margin-left:1vw;
+}
+
+
+.income, .outcome, .total {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.income {
+    color:#1E7443;
+}
+.outcome {
+    color: #8A2020;
+}
+.total {
+    color: #2955B5;
+}

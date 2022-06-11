@@ -11,6 +11,7 @@ function Controls(props) {
   return (
     <div className="controls__wrap">
       <button onClick={handleButtonClick}>Add an Item</button>
+      {props.children}
     </div>
   );
 }
