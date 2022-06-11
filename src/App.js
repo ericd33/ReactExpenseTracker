@@ -58,7 +58,7 @@ function App() {
     return filteredList;
   }
 
-  //transformar a porcentaje de a cuerdo a el mayor elemento
+  //transformar a porcentaje de a cuerdo al mayor elemento
   //array => array
   function toPercentArr(arr) {
     let narr = [];
